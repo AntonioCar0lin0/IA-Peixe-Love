@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from services.gemini_service import gerar_resposta
 from services.audio_service import gerar_audio
-from services.image_service import obter_imagem
+#from services.image_service import obter_imagem
 from services.supabase_client import obter_entrada_nao_processada, atualizar_resposta
 from pydantic import BaseModel
 
@@ -61,14 +61,14 @@ def testar_resposta_manual(payload: EntradaTeste):
         audio_url = gerar_audio(resposta, payload.usuario_id)
         print("Áudio salvo em:", audio_url)
 
-        imagem_url = obter_imagem()
-        print("Imagem salva em:", imagem_url)
+        #imagem_url = obter_imagem()
+        #print("Imagem salva em:", imagem_url)
 
         return {
             "status": "ok",
             "resposta": resposta,
-            "audio_url": audio_url,
-            "imagem_url": imagem_url
+            "audio_url": audio_url
+            #"imagem_url": imagem_url
         }
 
     except Exception as e:
