@@ -32,7 +32,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://front-cria-comp-93fz.vercel.app"],
+    allow_origins=["http://localhost:3000", "https://front-cria-comp-93fz.vercel.app", "https://front-cria-comp-6iag.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
