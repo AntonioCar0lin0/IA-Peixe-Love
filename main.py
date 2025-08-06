@@ -8,6 +8,7 @@ from pydantic import BaseModel
 from supabase import create_client, Client
 from google import generativeai as genai
 from services.gemini_service import gerar_resposta  # Importando a função do gemini_service
+from fastapi.middleware.cors import CORSMiddleware
 
 # Carregar variáveis de ambiente do .env (para desenvolvimento local)
 load_dotenv()
@@ -31,6 +32,15 @@ genai.configure(api_key=GEMINI_API_KEY)
 
 app = FastAPI()
 
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # --- Pydantic Model para a entrada da API ---
 class EntradaTeste(BaseModel):
     usuario_id: str
